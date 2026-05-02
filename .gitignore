@@ -1,2 +1,3 @@
 .venv
 *.swp
+.mypy_cache
