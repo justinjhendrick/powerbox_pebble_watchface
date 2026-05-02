@@ -1,0 +1,46 @@
+# color picker from photo
+# ".": 0x000000  # black
+# "W": 0xffffff  # black
+# ":": 0x303a36  # dark green
+# "r": 0xb54138  # red
+# "g": 0x42544b  # green
+# "p": 0xb92765  # pink
+# "y": 0xad933b  # yellow
+
+# pebble compatible
+".": 0x000000  # black
+"W": 0xffffff  # black
+"0": 0x005500  # dark green
+"g": 0x55AA55  # green
+"r": 0xAA0000  # red
+"p": 0xFF0055  # pink
+"y": 0xFFAA00  # yellow
+"a": 0xAAAAAA  # gray
+
+# aaaaaaa.00000 00000.aaaaaaa
+# aaaaaaa.0.... ....0.aaaaaaa
+# aaaaaaa.00000 00000.aaaaaaa
+# aaaaaa..00000 00000..aaaaaa
+# aaaaaa.000000 000000.aaaaaa
+# aaaaa..000000 000000..aaaaa
+# aaa...0000000 0000000...aaa
+# ....000.00000 00000.000....
+# 00000000.0000 0000.00000000
+# 0.0000000.000 000.0000000.0
+# 0.00000000000 00000000000.0
+# 0.00000000000 00000000000.0
+# 0.00000000000 00000000000.0
+#
+# 0.00000000000 00000000000.0
+# 0.00000000000 00000000000.0
+# 0.00000000000 00000000000.0
+# 0.0000000.000 000.0000000.0
+# 00000000.0000 0000.00000000
+# ....000.00000 00000.000....
+# aaa...0000000 0000000...aaa
+# aaaaa..000000 000000..aaaaa
+# aaaaaa.000000 000000.aaaaaa
+# aaaaaa..00000 00000..aaaaaa
+# aaaaaaa.00000 00000.aaaaaaa
+# aaaaaaa.0.... ....0.aaaaaaa
+# aaaaaaa.00000 00000.aaaaaaa
