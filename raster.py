@@ -1,6 +1,5 @@
 import argparse
 from PIL import Image
-import numpy as np
 import yaml
 import typing
 
@@ -19,7 +18,7 @@ def reverse_dict(d: dict[str, int]) -> dict[int, str]:
         result[v] = k
     return result
 
-def raster(colormap: dict[int, str], textgrid: list[str], block_size: int, fi: typing.IO) -> None:
+def raster(colormap: dict[str, int], textgrid: list[str], block_size: int, fi: typing.IO) -> None:
     width = len(textgrid[0]) * block_size
     height = len(textgrid) * block_size
     img = Image.new("RGBA", (width, height))
@@ -31,7 +30,7 @@ def raster(colormap: dict[int, str], textgrid: list[str], block_size: int, fi: t
             R = (color & 0xFF0000) >> (2 * 8)
             G = (color & 0x00FF00) >> (1 * 8)
             B = (color & 0x0000FF) >> (0 * 8)
-            A = 0xFF
+            A = 0xFF  # TODO
             bands = (R, G, B, A)
             for x in range(block_size):
                 for y in range(block_size):
@@ -39,19 +38,21 @@ def raster(colormap: dict[int, str], textgrid: list[str], block_size: int, fi: t
                     img.putpixel(pos, bands)
     img.save(fi, format="bmp")
 
-def unraster(mapcolor: dict[str, int], image_path: str) -> list[str]:
+def unraster(mapcolor: dict[int, str], image_path: str) -> list[str]:
     result = []
     with Image.open(image_path) as img:
+        img = img.convert("RGBA")
         w, h = img.size
         for r in range(h):
             row = ""
             for c in range(w):
-                # TODO: what about alpha channel?
-                R, G, B = img.getpixel((c, r))
-                color = 0
-                color |= R << (2 * 8)
-                color |= G << (1 * 8)
-                color |= B << (0 * 8)
+                R, G, B, A = img.getpixel((c, r))
+                assert A == 0xFF  # TODO
+                color = (
+                      (R << (2 * 8))
+                    | (G << (1 * 8))
+                    | (B << (0 * 8))
+                )
                 char = mapcolor[color]
                 row += char
             result.append(row)
